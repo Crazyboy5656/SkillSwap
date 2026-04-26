@@ -2,8 +2,11 @@
   "name": "skillswap-v2",
   "version": "1.0.0",
   "description": "Peer-to-peer skill exchange platform",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "node scripts/inject-config.js",
+    "build": "node scripts/vercel-build.js",
     "dev": "npx serve . -p 3000",
     "lint": "echo 'No build step — vanilla HTML/JS'"
   },

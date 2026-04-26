@@ -77,12 +77,22 @@ A peer-to-peer skill-exchange platform. Users teach what they know and learn wha
 ## Deploy to Vercel
 
 1. Push to GitHub.
-2. Import project in Vercel.
-3. Set environment variables:
-   - `SUPABASE_URL`
-   - `SUPABASE_ANON_KEY`
-4. Vercel will serve static files automatically.
-5. A `vercel.json` rewrites file is included.
+2. **Vercel → Project → Settings → General → Build & Development**
+   - **Framework Preset:** Other
+   - **Build Command:** `npm run build` (zorunlu; `public/` klasörünü üretir)
+   - **Install Command:** `npm install` (varsayılan)
+   - **Output Directory:** `public` (küçük harf; nokta / boş değil)
+3. **Vercel → Settings → Environment Variables** — **Name** = sol sütun (key), **Value** = sağ sütun:
+
+| Name (key) | Value (ne yazacaksın) |
+|------------|------------------------|
+| `SUPABASE_URL` | Supabase Dashboard → Project Settings → API → **Project URL** (örn. `https://xxxxx.supabase.co`) |
+| `SUPABASE_ANON_KEY` | Aynı sayfadaki **anon public** anahtar (uzun `eyJhbGci...` metni) |
+
+Hepsine **Production** (ve istersen **Preview**) işaretleyip kaydet. Sonra **Deployments → Redeploy** (gerekirse “Clear build cache” ile).
+
+4. Hata: *No Output Directory named "public"*: en son koddan sonra push et; panelde **Output Directory = `public`**, **Build = `npm run build`** olduğundan emin ol. `vercel.json` içinde `outputDirectory` yok; klasör `npm run build` ile oluşur.
+5. Kök yönlendirmeler için `vercel.json` içinde `routes` bulunur.
 
 ## Supabase Storage Buckets
 
