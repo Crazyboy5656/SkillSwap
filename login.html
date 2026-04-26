@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>SkillSwap Teens - Giriş Yap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="/css/app.css"/>
+<script src="/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Spline+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#2c0051",
+                        "on-background": "#111c2d",
+                        "surface": "#f9f9ff",
+                        "tertiary": "#00505f",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "on-tertiary-container": "#93e8ff",
+                        "on-secondary-fixed-variant": "#6800b4",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "surface-variant": "#d8e3fb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-high": "#dee8ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-surface": "#111c2d",
+                        "error": "#ba1a1a",
+                        "outline": "#777587",
+                        "primary-container": "#4f46e5",
+                        "inverse-primary": "#c3c0ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#006a7c",
+                        "secondary-fixed-dim": "#ddb8ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "secondary-container": "#9e41f5",
+                        "on-primary-container": "#dad7ff",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "inverse-surface": "#263143",
+                        "primary": "#3525cd",
+                        "surface-dim": "#cfdaf2",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "surface-container-highest": "#d8e3fb",
+                        "secondary": "#831ada",
+                        "surface-container": "#e7eeff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#f0dbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "48px",
+                        "lg": "24px",
+                        "margin": "20px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Spline Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Spline Sans"],
+                        "headline-lg": ["Spline Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f9f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(131, 26, 218, 0.08) 0px, transparent 50%);
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background">
+<!-- TopAppBar -->
+<header class="bg-white/70 backdrop-blur-xl sticky top-0 z-50 border-b border-white/20 shadow-sm flex items-center justify-between px-5 h-16 w-full shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-indigo-600" data-icon="school">school</span>
+<span class="text-xl font-black bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent font-['Spline_Sans'] tracking-tight">SkillSwap Teens</span>
+</div>
+<div class="w-6"></div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center px-margin py-lg w-full relative">
+<div class="w-full max-w-[440px] flex flex-col gap-xl">
+<!-- Welcome Area -->
+<div class="text-center flex flex-col gap-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-background tracking-tight">Hoş Geldiniz</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Öğrenmek ve paylaşmak için hemen giriş yapın.</p>
+</div>
+<!-- Login Card -->
+<div class="bg-white/80 backdrop-blur-2xl p-xl rounded-[2rem] shadow-[0_8px_32px_rgba(79,70,229,0.12)] border border-white/20 flex flex-col gap-lg">
+<form id="login-form" class="flex flex-col gap-lg">
+<!-- Email Input -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface ml-1">E-posta</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="alternate_email">alternate_email</span>
+</div>
+<input id="input-email-login" class="w-full h-[56px] pl-12 pr-4 bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-xl font-body-md text-body-md transition-all placeholder:text-outline-variant" placeholder="ornek@mail.com" type="email" autocomplete="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface ml-1">Şifre</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+</div>
+<input id="input-pw-login" class="w-full h-[56px] pl-12 pr-12 bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-xl font-body-md text-body-md transition-all placeholder:text-outline-variant" placeholder="••••••••" type="password" autocomplete="current-password"/>
+<button id="toggle-pw-login" class="absolute inset-y-0 right-0 pr-4 flex items-center text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password -->
+<div class="flex justify-end">
+<a class="font-label-sm text-label-sm text-primary hover:opacity-80 transition-opacity" href="/forgot.html">Şifrenizi mi unuttunuz?</a>
+</div>
+<!-- Login Button -->
+<button class="w-full h-[56px] bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md text-label-md rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-base" type="submit">
+<span>Giriş yap</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Registration Footer -->
+<div class="text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Hesabın yok mu? 
+                    <a class="text-primary font-bold hover:underline" href="/register">Kaydol</a>
+</p>
+</div>
+</div>
+<!-- Decorative backgrounds contained within main to avoid overflow issues -->
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+<div class="absolute -top-12 -right-12 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+</main>
+<script type="module" src="/js/pages/login.js?v=4"></script>
+</body></html>

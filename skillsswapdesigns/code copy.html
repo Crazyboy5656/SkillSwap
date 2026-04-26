@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e7eeff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#831ada",
+                        "secondary-fixed": "#f0dbff",
+                        "primary": "#3525cd",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "inverse-surface": "#263143",
+                        "secondary-container": "#9e41f5",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-highest": "#d8e3fb",
+                        "surface-dim": "#cfdaf2",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "secondary-fixed-dim": "#ddb8ff",
+                        "tertiary-container": "#006a7c",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "outline": "#777587",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-high": "#dee8ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#111c2d",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-tint": "#4d44e3",
+                        "surface-variant": "#d8e3fb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-tertiary-container": "#93e8ff",
+                        "on-secondary-fixed-variant": "#6800b4",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#00505f",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-secondary-fixed": "#2c0051",
+                        "surface": "#f9f9ff",
+                        "on-background": "#111c2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "2xl": "48px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Spline Sans"],
+                        "headline-lg": ["Spline Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Spline Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden pb-32">
+<nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center w-full px-5 py-3 z-50 fixed top-0 w-full border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm shadow-indigo-100/20 dark:shadow-none">
+<div class="font-spline-sans font-black text-2xl tracking-tighter text-indigo-600 dark:text-indigo-400">SkillSwap</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all p-2 rounded-full active:scale-95 duration-150" data-icon="notifications">notifications</button>
+</div>
+</nav>
+<main class="mt-20 px-5 space-y-8">
+<header class="space-y-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Keşfetmeye Hazır mısın?</h1>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-2xl ring-1 ring-outline/20 focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md placeholder:text-outline-variant" placeholder="Ders, yetenek veya eğitmen ara..." type="text"/>
+</div>
+</header>
+<section class="space-y-4 overflow-hidden">
+<h2 class="font-label-md text-label-md text-outline-variant uppercase tracking-widest">Kategoriler</h2>
+<div class="flex overflow-x-auto pb-4 gap-3 no-scrollbar -mx-5 px-5">
+<button class="flex-none px-6 py-3 rounded-full bg-primary-container text-white font-label-md shadow-lg shadow-primary/20 active:scale-95 transition-transform">Müzik</button>
+<button class="flex-none px-6 py-3 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Spor</button>
+<button class="flex-none px-6 py-3 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Yazılım</button>
+<button class="flex-none px-6 py-3 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Tasarım</button>
+<button class="flex-none px-6 py-3 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Dil Öğrenimi</button>
+<button class="flex-none px-6 py-3 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Matematik</button>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Sana Özel</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-[2rem] overflow-hidden shadow-sm flex flex-col group active:scale-[0.98] transition-transform">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of electric guitar strings with colorful neon studio lighting reflecting on the body" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwcjWLjuUdwlRukUNxdrTKTMQ3iqw2I8xtaFMWt4rlygVuE7k2pA4U4aoeqYU0DOkuuY6Md2Y12GHruXwd6XRon_mZx_GaRltmGCqjl22rQXfXmoKfLDbZQtrEwbw1Tx0wYi05b7eTRjp_ahNisOnT4ah4fiOZLV6fB5XLQzFmD7KruYi3tUGJOnG5wR2DcXxZMBeeTlTvVg5kI-v4hifMQ2pwwBCCbS51g9DYot1-ynJBUrKvb4GQUcDZgEyl2Jq9p_ba-SjLZWRz"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-label-sm text-secondary font-bold">Popüler</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a smiling teenage boy with glasses and a friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6JhIaI664eT_-XHPHENAQgV43nJRJb25NcTTIJWs2A9qaNnOFGH1uk1PKNVUTRSTu3DXoOD7XWWs7-ZefylaRPn2T-ZlIk7f0IZxH5G7ryu4rVnhgRN3e-9_pnNgWUOfCPSFpfINnY1jyolGgnZ7QdK9aoyZAzyKbg8cRioT4cI5Gqn5SDprOWOQewbOIsf9FYXwOQPW99Mu_n3mgoQpgndZYm-e2BRriqo_4DLTXoQKqAc1wIfbxLsVjDceluKRL4fiVSjaLGWTd"/>
+<span class="font-label-md text-on-surface-variant">Arda Yılmaz</span>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Elektro Gitar: Solo Teknikleri</h3>
+<div class="flex items-center gap-4 text-outline text-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 45 dk</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span> 4.9</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-[2rem] overflow-hidden shadow-sm flex flex-col group active:scale-[0.98] transition-transform">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean laptop screen showing colorful code with soft aesthetic desk accessories in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5y6Pys6FXIQxob6iKU5OwSfuxZSTgLu515gLKu8wk7WKO9vJMTDac1H9YzjlZqmx7CFt0_CnEiFGx10fFgcMX8rsdmJQgvp3_zaGKT-83FJr-7o3Tv5K0KD6D8TxXRABNANYxOPsfBC1-8awrRBNRQj-XfraXWmESE3H9iWeTcDsesll8DgivXmQcU43CEKqdIQ584oROd0nYOY0m-jVpaLu3cTvHXiou4Zggd74TOE_gvk5y_LBer8ywnw_R9tnCdzD9MKcC68eE"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-label-sm text-secondary font-bold">Yeni</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a creative teenage girl with dyed hair and a confident look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_904x0Z7QVioNhsXSHOjDpNocJWh4VQi0m0ZxVc3AKKYPnxAJuG4ZvpTOLTL6g-74uPVmwyh3HHiXBB3BXQLS15TI9AqhduuUWQtA_5RkyLqalofxB-9R_pfW_qd5R-_u0sjNKNyqaAp5z66jXMgMLIASIvhIYrA7ayqJKHvOdt3p1yODQwW9f8UA9SIokkzUhd0q3ixcG4ImvtG_-m0mtOMYTdJf9KMOnXzlvjvDKIeCFr_3sgiXBvjlF0HI8cxP_4WFkx3tAbkR"/>
+<span class="font-label-md text-on-surface-variant">Selin Demir</span>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Python ile Oyun Geliştirme</h3>
+<div class="flex items-center gap-4 text-outline text-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 60 dk</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span> 4.8</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container rounded-[2.5rem] p-8 space-y-6 relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Öğretmeye Başla!</h2>
+<p class="text-body-md text-on-surface-variant max-w-[80%]">Senin de harika bir yeteneğin var mı? Hemen profilini oluştur ve topluluğa katıl.</p>
+<button class="bg-secondary text-white px-8 py-4 rounded-2xl font-label-md shadow-xl shadow-secondary/20 flex items-center gap-2 active:scale-95 transition-transform">
+                    İlan Oluştur <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-200/50 dark:border-slate-800/50 rounded-t-2xl shadow-[0_-4px_20px_rgba(79,70,229,0.05)]">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-spline-sans text-[11px] font-semibold">Ana Sayfa</span>
+</div>
+<div class="flex flex-col items-center justify-center text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/30 rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-spline-sans text-[11px] font-semibold">Arama</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-spline-sans text-[11px] font-semibold">Oluştur</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-spline-sans text-[11px] font-semibold">Profilim</span>
+</div>
+</footer>
+</body></html>

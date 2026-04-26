@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="/css/app.css"/>
+<script src="/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "inverse-surface": "#263143",
+                    "inverse-primary": "#c3c0ff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9ff",
+                    "secondary": "#831ada",
+                    "secondary-fixed-dim": "#ddb8ff",
+                    "surface-dim": "#cfdaf2",
+                    "surface-container": "#e7eeff",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#006a7c",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "outline-variant": "#c7c4d8",
+                    "surface-tint": "#4d44e3",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-secondary-fixed": "#2c0051",
+                    "secondary-container": "#9e41f5",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed": "#f0dbff",
+                    "on-background": "#111c2d",
+                    "surface-variant": "#d8e3fb",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#93e8ff",
+                    "on-secondary-container": "#fffbff",
+                    "tertiary": "#00505f",
+                    "on-secondary-fixed-variant": "#6800b4",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-primary-fixed": "#0f0069",
+                    "on-surface-variant": "#464555",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "tertiary-fixed": "#acedff",
+                    "surface-container-low": "#f0f3ff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dee8ff",
+                    "primary": "#3525cd",
+                    "on-surface": "#111c2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "2xl": "48px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin": "20px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Spline Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Spline Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Spline Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style id="nav-active-style">
+[data-nav-id="nav-home"] { color: #4f46e5 !important; }
+[data-nav-id="nav-home"] .nav-icon { background: rgba(79,70,229,0.13) !important; font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24 !important; }
+[data-nav-id="nav-home"] .nav-label { font-weight: 800 !important; color: #4f46e5 !important; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed-dim">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm shadow-indigo-500/5 flex justify-between items-center w-full px-5 py-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container transition-all duration-300 active:scale-95">
+<img alt="Kullanıcı Profili" class="w-full h-full object-cover" data-alt="Portrait of a trendy teenage boy with a friendly smile, vibrant illustration style with cool blue and purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDRihL6uWt3S0WmRfYXwR1Zs-C_igwEli2HoctE8tVj8O6XStPGGsQFH8cGDJ6h8MR5AOyc5c16pteUTjxW_LVsUzuoHZOPiyOvZ3-NrHpn0ltMXf7vsgZKA3ruSLwwd6N4mUSzhO89g723GY89288OoIUTkMNr9nGKk5y9IMLf8niMy9UW9xFZlPpjPP64-BRAaBzTCduZCGwfcqKu0IVfDsHgqwm8J2RlxWhfVZYetxGGhKbvZApXunXwT-Gr_pThLhQONzknL2n"/>
+</div>
+<h1 class="text-xl font-black tracking-tight text-indigo-600 font-['Spline_Sans']">SkillSwap</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-100/50 text-slate-500 transition-all duration-300 active:scale-95 relative" onclick="location.href='/notifications'">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span id="notif-badge" class="absolute top-1 right-1 min-w-[16px] h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1" hidden>0</span>
+</button>
+</header>
+<main class="pb-24 pt-4">
+<!-- Greeting -->
+<section class="px-5 mb-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1" id="greeting">Selam! 👋</h2>
+<p class="font-body-md text-on-surface-variant">Bugün hangi yeteneği keşfediyoruz?</p>
+</section>
+<!-- "Sana Özel" Section -->
+<section class="mb-10">
+<div class="px-5 flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sana Özel</h3>
+<button class="text-primary font-label-md flex items-center" onclick="location.href='/listings'">
+  Tümü <span class="material-symbols-outlined text-base ml-1">chevron_right</span>
+</button>
+</div>
+<div id="size-gore-list" class="flex overflow-x-auto gap-4 px-5 pb-2 hide-scrollbar snap-x snap-mandatory scroll-pl-5">
+  <div class="flex-shrink-0 w-64 snap-start flex items-center justify-center h-44 text-slate-300">
+    <span class="material-symbols-outlined animate-spin text-4xl">progress_activity</span>
+  </div>
+</div>
+</section>
+<!-- "Popüler Eğitmenler" Section -->
+<section class="px-5 mb-10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Popüler Eğitmenler</h3>
+</div>
+<div id="popular-tutors" class="space-y-4">
+  <div class="skeleton h-20 rounded-3xl"></div>
+  <div class="skeleton h-20 rounded-3xl"></div>
+  <div class="skeleton h-20 rounded-3xl"></div>
+</div>
+</section>
+<!-- Category Bento -->
+<section class="px-5 pb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Kategoriler</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-indigo-600 rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden cursor-pointer active:scale-95 transition-transform" onclick="location.href='/listings?cat=yazilim'">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl">code</span>
+<span class="material-symbols-outlined text-2xl">code</span>
+<span class="font-label-md">Yazılım</span>
+</div>
+<div class="bg-secondary rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden cursor-pointer active:scale-95 transition-transform" onclick="location.href='/listings?cat=tasarim'">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl">palette</span>
+<span class="material-symbols-outlined text-2xl">palette</span>
+<span class="font-label-md">Tasarım</span>
+</div>
+<div class="bg-tertiary-container rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden cursor-pointer active:scale-95 transition-transform" onclick="location.href='/listings?cat=muzik'">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl">music_note</span>
+<span class="material-symbols-outlined text-2xl">music_note</span>
+<span class="font-label-md">Müzik</span>
+</div>
+<div class="bg-surface-container-highest rounded-3xl p-4 h-32 flex flex-col justify-between text-on-surface-variant relative overflow-hidden border border-slate-200/50 cursor-pointer active:scale-95 transition-transform" onclick="location.href='/listings'">
+<span class="material-symbols-outlined opacity-10 absolute -right-2 -bottom-2 text-6xl">search</span>
+<span class="material-symbols-outlined text-2xl">search</span>
+<span class="font-label-md">Ara</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 h-[72px] bg-white border-t border-slate-100 shadow-[0_-1px_10px_rgba(0,0,0,0.06)]">
+  <a data-nav-id="nav-home" href="/home" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">home</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Ana Sayfa</span>
+  </a>
+  <a data-nav-id="nav-search" href="/listings" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">search</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Keşfet</span>
+  </a>
+  <a data-nav-id="nav-create" href="/create" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">add_box</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Oluştur</span>
+  </a>
+  <a data-nav-id="nav-messages" href="/chat" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">chat</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Mesajlar</span>
+  </a>
+  <a data-nav-id="nav-profile" href="/profile" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">account_circle</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Profilim</span>
+  </a>
+</nav>
+<script type="module" src="/js/pages/home.js?v=4"></script>
+</body></html>

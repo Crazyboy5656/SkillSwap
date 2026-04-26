@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillSwap Teens - Profil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dee8ff",
+                        "secondary": "#831ada",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "secondary-container": "#9e41f5",
+                        "on-secondary-fixed": "#2c0051",
+                        "background": "#f9f9ff",
+                        "secondary-fixed": "#f0dbff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#777587",
+                        "surface-dim": "#cfdaf2",
+                        "surface-variant": "#d8e3fb",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary": "#3525cd",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container": "#e7eeff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#d8e3fb",
+                        "tertiary-fixed": "#acedff",
+                        "on-tertiary-container": "#93e8ff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-primary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "surface-tint": "#4d44e3",
+                        "tertiary-container": "#006a7c",
+                        "tertiary": "#00505f",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-fixed-variant": "#6800b4",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-background": "#111c2d",
+                        "on-surface-variant": "#464555",
+                        "secondary-fixed-dim": "#ddb8ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "inverse-surface": "#263143",
+                        "primary-fixed": "#e2dfff",
+                        "on-surface": "#111c2d",
+                        "on-primary-container": "#dad7ff",
+                        "on-primary-fixed": "#000069",
+                        "primary-container": "#4f46e5",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "2xl": "48px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "margin": "20px",
+                        "gutter": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Spline Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Spline Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Spline Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #111c2d;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .profile-gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #831ada 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-b border-slate-200/50 shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+<button class="material-symbols-outlined text-indigo-600 active:scale-95 transition-transform duration-200 p-2 rounded-full hover:bg-indigo-50/50" data-icon="menu">menu</button>
+<h1 class="font-['Spline_Sans'] font-semibold text-lg text-indigo-600">Profile</h1>
+<button class="material-symbols-outlined text-indigo-600 active:scale-95 transition-transform duration-200 p-2 rounded-full hover:bg-indigo-50/50" data-icon="settings">settings</button>
+</header>
+<main class="mt-20 px-margin space-y-lg">
+<!-- Profile Header Section -->
+<section class="relative">
+<div class="h-32 w-full rounded-[32px] profile-gradient-bg opacity-90"></div>
+<div class="flex flex-col items-center -mt-16 px-4">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-4 border-white overflow-hidden shadow-xl">
+<img alt="Profile Photo" class="w-full h-full object-cover" data-alt="portrait of a confident teenage girl with a friendly smile, natural lighting, wearing a stylish denim jacket, soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwgonlmk-_kHwMRN0HF5g_B1ehQ25-0ENJAzsVrg5BgYU-IlonN68TP7acA1iFstb2vaDkLfURzbi3hbJSqBOspRQtSorudUMipo6rejViobVOPmkRwvaPp2_qJ9vtgHPDrxuMFxvvCWQbIlA2naNw93TAHb8ErSHwtuQPfql46MDTupR4t-LF2AHQVs7vUlmkLY0CTNPFstYduiOnRmsxcb8FkR9HvNkxoDTrd0IfSACvxdXj0VAZ-ctyzX98J-1qXnaczMbwM_-E"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-green-500 w-6 h-6 border-4 border-white rounded-full"></div>
+</div>
+<div class="mt-4 text-center">
+<h2 class="font-headline-md text-headline-md text-on-background">Derin Yılmaz</h2>
+<p class="font-label-md text-label-md text-primary mt-1">@derinyilmaz_24</p>
+</div>
+</div>
+</section>
+<!-- Bio Section -->
+<section class="glass-card p-md rounded-[24px] shadow-sm relative">
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<h3 class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Hakkımda</h3>
+<p class="font-body-md text-body-md text-on-surface-variant pr-8">
+                        Lise 3 öğrencisiyim. 5 yıldır gitar çalıyorum ve ileri seviye İngilizce biliyorum. Yeni beceriler edinmeyi ve bildiklerimi paylaşmayı seviyorum! 🎸✨
+                    </p>
+</div>
+<button class="material-symbols-outlined text-indigo-600 p-1 hover:bg-indigo-50 rounded-lg transition-colors" data-icon="edit_note">edit_note</button>
+</div>
+</section>
+<!-- Ratings Section - Bento Style -->
+<section class="grid grid-cols-2 gap-gutter">
+<div class="glass-card p-md rounded-[24px] flex flex-col items-center justify-center text-center space-y-2 border-l-4 border-l-primary">
+<span class="font-label-sm text-label-sm text-outline">Öğrenci Puanı</span>
+<div class="flex items-center text-primary">
+<span class="text-headline-md font-headline-md mr-1">4.9</span>
+<span class="material-symbols-outlined text-xl" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex space-x-0.5">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="glass-card p-md rounded-[24px] flex flex-col items-center justify-center text-center space-y-2 border-l-4 border-l-secondary">
+<span class="font-label-sm text-label-sm text-outline">Eğitmen Puanı</span>
+<div class="flex items-center text-secondary">
+<span class="text-headline-md font-headline-md mr-1">4.8</span>
+<span class="material-symbols-outlined text-xl" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex space-x-0.5">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs text-secondary/30" data-icon="star">star</span>
+</div>
+</div>
+</section>
+<!-- Active Lessons Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Aktif Eğitimler</h3>
+<button class="text-primary font-label-md">Hepsini Gör</button>
+</div>
+<div class="space-y-md">
+<!-- Lesson Card 1 -->
+<div class="glass-card p-4 rounded-[28px] flex gap-md items-center active:scale-[0.98] transition-transform duration-150 cursor-pointer">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img alt="Guitar Lesson" class="w-full h-full object-cover" data-alt="close up of acoustic guitar strings with a person's hand pressing down on a fret, warm artistic lighting, shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtyQH9VjCFuEcb6YQ7vNGwjeNz4BEme9ZxgQJ2ZEfYhgBCddbJGMOdCtCQGhCAFBt4hAt5BHk_PYihom-yx1BwmhF2M_28i-jJ4-ehRxK2LgJHn3kr0qV-orDAM31eeVisK05yx4zEgc2zT9ZB9-50h0h2GdKLCb4Fw9AhIhCCwS4ktzn_nnZK1YvxAEpshrfMwIQz0QcCuVm6H0NJ03UK3PxhRr8Uoj-GIRESMPRhSOAZjlQ9X-5ymTtB2UrN3zG-JWeFljm2Bw5B"/>
+</div>
+<div class="flex-grow">
+<span class="inline-block px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-[10px] rounded-full mb-1">EĞİTMEN</span>
+<h4 class="font-label-md text-label-md text-on-surface">Akustik Gitar Temelleri</h4>
+<p class="font-body-sm text-body-sm text-outline flex items-center mt-1">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="schedule">schedule</span> Salı, 18:30
+                        </p>
+</div>
+<div class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</div>
+</div>
+<!-- Lesson Card 2 -->
+<div class="glass-card p-4 rounded-[28px] flex gap-md items-center active:scale-[0.98] transition-transform duration-150 cursor-pointer">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img alt="Math Help" class="w-full h-full object-cover" data-alt="neatly written complex mathematical equations on a dark chalkboard with white chalk, professional scientific aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4xsxCtoVRWEP6I1upZ-5mBXdwLUoM3VxV7WRA34U8EyvjInQw2HZnWoOYRBrmMg66YPj3MTPLxRFqp3GtzvQCa1dqNwThiJV_Xl1CK9LsiRXi6HZbonwbmIGAbUigS5nYCPkTD49XjV1VpiFUwipiQqznYbeEYqGWi9qPPRJxvOnwXfxPmJ-DTiYZgcRTPOaZSmAdeKWoSts0QZDb5hE8hP-mRkgXZnzSCK2lE06vnG2ObxqbnGiRlSeS2_Ze8x5YIymeFegHEkpP"/>
+</div>
+<div class="flex-grow">
+<span class="inline-block px-2 py-0.5 bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-[10px] rounded-full mb-1">ÖĞRENCİ</span>
+<h4 class="font-label-md text-label-md text-on-surface">TYT Matematik Yardımı</h4>
+<p class="font-body-sm text-body-sm text-outline flex items-center mt-1">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="schedule">schedule</span> Perşembe, 16:00
+                        </p>
+</div>
+<div class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for Create (Contextual for Home/Profile typically) -->
+<button class="fixed bottom-28 right-6 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-300 flex items-center justify-center active:scale-90 transition-transform duration-200 z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-[72px] bg-white border-t border-slate-100 shadow-[0_-1px_10px_rgba(0,0,0,0.02)]">
+<a class="flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="font-['Spline_Sans'] text-[11px] font-medium mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]">search</span>
+<span class="font-['Spline_Sans'] text-[11px] font-medium mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]">school</span>
+<span class="font-['Spline_Sans'] text-[11px] font-medium mt-1">Lessons</span>
+</a>
+<a class="flex flex-col items-center justify-center flex-1 h-full" href="#">
+<div class="bg-indigo-600/90 text-white rounded-2xl px-6 py-2 flex flex-col items-center shadow-md shadow-indigo-100">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Spline_Sans'] text-[11px] font-semibold mt-1">Profile</span>
+</div>
+</a>
+</nav>
+</body></html>

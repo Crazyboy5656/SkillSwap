@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="light" lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillSwap — Mesajlar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/app.css"/>
+<script src="/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode:"class",
+  theme:{ extend:{
+    colors:{"primary":"#3525cd","secondary":"#831ada","primary-container":"#4f46e5","on-primary":"#ffffff","surface":"#f9f9ff","surface-container-low":"#f0f3ff","surface-container":"#e7eeff","surface-container-high":"#dee8ff","on-surface":"#111c2d","on-surface-variant":"#464555","outline-variant":"#c7c4d8","outline":"#777587","background":"#f9f9ff"},
+    fontFamily:{"headline-md":["Spline Sans"],"headline-lg":["Spline Sans"],"body-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},
+    fontSize:{"headline-md":["24px",{"lineHeight":"30px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"38px","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"700"}]},
+    spacing:{"xs":"4px","sm":"12px","base":"8px","md":"16px","lg":"24px","xl":"32px","2xl":"48px","margin":"20px","gutter":"16px"}
+  }}
+}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  body{min-height:max(884px,100dvh);}
+  #messages-area{ scroll-behavior:smooth; }
+</style>
+<style id="nav-active-style">
+[data-nav-id="nav-messages"] { color: #4f46e5 !important; }
+[data-nav-id="nav-messages"] .nav-icon { background: rgba(79,70,229,0.13) !important; font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24 !important; }
+[data-nav-id="nav-messages"] .nav-label { font-weight: 800 !important; color: #4f46e5 !important; }
+</style>
+</head>
+<body class="bg-background font-body-md text-on-surface overflow-hidden" style="height:100dvh;">
+
+<!-- ───────────────── CONVERSATION LIST VIEW ───────────────── -->
+<div id="view-list" class="flex flex-col absolute inset-0" style="bottom:72px;">
+  <!-- Header -->
+  <header class="flex-shrink-0 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 flex items-center justify-between px-4 h-16 shadow-sm">
+    <span class="font-['Spline_Sans'] text-xl font-extrabold text-indigo-600">Mesajlar</span>
+    <button onclick="location.href='/notifications'" class="relative p-2 text-slate-500">
+      <span class="material-symbols-outlined">notifications</span>
+      <span id="notif-badge" class="absolute top-1 right-1 min-w-[14px] h-3.5 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-0.5" hidden>0</span>
+    </button>
+  </header>
+
+  <!-- Conversations list -->
+  <div id="conv-list" class="flex-grow overflow-y-auto p-4 space-y-3">
+    <div class="skeleton h-20 rounded-2xl"></div>
+    <div class="skeleton h-20 rounded-2xl"></div>
+    <div class="skeleton h-20 rounded-2xl"></div>
+  </div>
+</div>
+
+<!-- ───────────────── THREAD VIEW ───────────────── -->
+<div id="view-thread" class="hidden flex-col absolute inset-0">
+  <!-- Thread header -->
+  <header class="flex-shrink-0 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 flex items-center gap-3 px-4 h-16 shadow-sm">
+    <button id="btn-back-to-list" class="p-2 text-indigo-600">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+    <img id="thread-avatar" class="w-10 h-10 rounded-full object-cover border-2 border-indigo-100" src="https://ui-avatars.com/api/?name=?&background=4f46e5&color=fff" alt=""/>
+    <div class="flex-grow min-w-0">
+      <h2 id="thread-name" class="font-label-md text-on-surface truncate">—</h2>
+      <p id="thread-skill" class="font-body-sm text-outline text-[12px] truncate">—</p>
+    </div>
+    <button id="btn-propose-session" class="px-3 py-1.5 bg-primary/10 text-primary font-label-sm rounded-xl text-xs">📅 Seans</button>
+  </header>
+
+  <!-- Messages area -->
+  <div id="messages-area" class="flex-grow overflow-y-auto p-4 space-y-2 bg-gradient-to-b from-surface-container/20 to-background">
+    <!-- messages rendered here -->
+  </div>
+
+  <!-- Session card (shown when session exists) -->
+  <div id="session-banner" class="hidden flex-shrink-0 bg-surface-container border-t border-outline-variant/30 px-4 py-3">
+    <p id="session-info" class="font-label-sm text-on-surface-variant text-center"></p>
+  </div>
+
+  <!-- Input bar -->
+  <div class="flex-shrink-0 bg-white/80 backdrop-blur-xl border-t border-slate-200/50 px-4 py-3 flex gap-2 items-end">
+    <div class="flex-grow relative">
+      <textarea
+        id="msg-input"
+        rows="1"
+        placeholder="Mesaj yaz..."
+        maxlength="2000"
+        class="w-full px-4 py-3 bg-surface-container-low rounded-2xl border-none focus:ring-2 focus:ring-primary font-body-md resize-none outline-none max-h-32 overflow-y-auto"
+        oninput="autoResize(this)"
+      ></textarea>
+    </div>
+    <button id="btn-send" class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-primary to-secondary text-white rounded-2xl flex items-center justify-center shadow-lg active:scale-90 transition-all">
+      <span class="material-symbols-outlined">send</span>
+    </button>
+  </div>
+</div>
+
+<!-- ───────────────── FIXED BOTTOM NAVIGATION ───────────────── -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 h-[72px] bg-white border-t border-slate-100 shadow-[0_-1px_10px_rgba(0,0,0,0.06)]">
+  <a data-nav-id="nav-home" href="/home" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">home</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Ana Sayfa</span>
+  </a>
+  <a data-nav-id="nav-search" href="/listings" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">search</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Keşfet</span>
+  </a>
+  <a data-nav-id="nav-create" href="/create" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">add_box</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Oluştur</span>
+  </a>
+  <a data-nav-id="nav-messages" href="/chat" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">chat</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Mesajlar</span>
+  </a>
+  <a data-nav-id="nav-profile" href="/profile" class="nav-link flex flex-col items-center justify-center flex-1 h-full text-slate-400 active:scale-95 transition-all">
+    <span class="nav-icon material-symbols-outlined text-[24px] w-12 h-8 flex items-center justify-center rounded-[14px] transition-all">account_circle</span>
+    <span class="nav-label font-['Spline_Sans'] text-[11px] font-semibold mt-0.5">Profilim</span>
+  </a>
+</nav>
+
+<script>
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 128) + 'px';
+}
+</script>
+<script type="module" src="/js/pages/chat.js?v=6"></script>
+</body>
+</html>

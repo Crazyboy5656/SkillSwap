@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "inverse-surface": "#263143",
+                    "inverse-primary": "#c3c0ff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9ff",
+                    "secondary": "#831ada",
+                    "secondary-fixed-dim": "#ddb8ff",
+                    "surface-dim": "#cfdaf2",
+                    "surface-container": "#e7eeff",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#006a7c",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "outline-variant": "#c7c4d8",
+                    "surface-tint": "#4d44e3",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-secondary-fixed": "#2c0051",
+                    "secondary-container": "#9e41f5",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed": "#f0dbff",
+                    "on-background": "#111c2d",
+                    "surface-variant": "#d8e3fb",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#93e8ff",
+                    "on-secondary-container": "#fffbff",
+                    "tertiary": "#00505f",
+                    "on-secondary-fixed-variant": "#6800b4",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-primary-fixed": "#0f0069",
+                    "on-surface-variant": "#464555",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "tertiary-fixed": "#acedff",
+                    "surface-container-low": "#f0f3ff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dee8ff",
+                    "primary": "#3525cd",
+                    "on-surface": "#111c2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "2xl": "48px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin": "20px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Spline Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Spline Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Spline Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed-dim">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm shadow-indigo-500/5 flex justify-between items-center w-full px-5 py-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container transition-all duration-300 active:scale-95">
+<img alt="Kullanıcı Profili" class="w-full h-full object-cover" data-alt="Portrait of a trendy teenage boy with a friendly smile, vibrant illustration style with cool blue and purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDRihL6uWt3S0WmRfYXwR1Zs-C_igwEli2HoctE8tVj8O6XStPGGsQFH8cGDJ6h8MR5AOyc5c16pteUTjxW_LVsUzuoHZOPiyOvZ3-NrHpn0ltMXf7vsgZKA3ruSLwwd6N4mUSzhO89g723GY89288OoIUTkMNr9nGKk5y9IMLf8niMy9UW9xFZlPpjPP64-BRAaBzTCduZCGwfcqKu0IVfDsHgqwm8J2RlxWhfVZYetxGGhKbvZApXunXwT-Gr_pThLhQONzknL2n"/>
+</div>
+<h1 class="text-xl font-black tracking-tight text-indigo-600 font-['Spline_Sans']">SkillSwap</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-100/50 text-slate-500 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pb-24 pt-4">
+<!-- Hero Section / Search Bar -->
+<section class="px-5 mb-8">
+<div class="mb-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Selam, Kerem! 👋</h2>
+<p class="font-body-md text-on-surface-variant">Bugün hangi yeteneği keşfediyoruz?</p>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary shadow-sm font-label-md" placeholder="Gitar dersi, Python, Çizim..." type="text"/>
+</div>
+</section>
+<!-- "Size Göre" Section -->
+<section class="mb-10">
+<div class="px-5 flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Size Göre</h3>
+<button class="text-primary font-label-md flex items-center">
+                    Tümü <span class="material-symbols-outlined text-base ml-1" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-5 hide-scrollbar snap-x">
+<!-- Suggestion Card 1 -->
+<div class="flex-shrink-0 w-72 snap-start">
+<div class="relative h-44 rounded-3xl overflow-hidden mb-3 shadow-lg group">
+<img alt="Gitar Dersi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a teenager hands playing an electric guitar, cinematic lighting with neon purple and indigo highlights, modern creative vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxX2LZz0vByL-0T5eg7emwcMTabmcjuevbEI54dSRxOA8QFuQ2JTHIhG0xaz9F6l86maFWJh-89NBjzPgV57DUwqfBM7PJDgT7F8twcnukfoz1hh0bZVTJn3FzAVXou3mFTFHMDIcJ38jurWKZ-myiF9g0bDA38BNS1sldqEhP4eW5LN8fqxBSwaxkwc7VBdAgL_F322F3PC92NJzuy78eam89H4BEApiNG_4LqWJIe_2ALPDIkT0mFkgXLFrMOMacczJLzcyejAvk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-4">
+<span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/30 uppercase tracking-widest">MÜZİK</span>
+</div>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-1">Elektro Gitar 101</h4>
+<p class="font-body-sm text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-base mr-1" data-icon="schedule">schedule</span> 45 dk • 8 Katılımcı
+                    </p>
+</div>
+<!-- Suggestion Card 2 -->
+<div class="flex-shrink-0 w-72 snap-start">
+<div class="relative h-44 rounded-3xl overflow-hidden mb-3 shadow-lg group">
+<img alt="Kodlama Dersi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist desk setup with a laptop showing lines of code, glowing keyboard, violet ambient lighting, clean and professional coding environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA18ehRpj8lcRfAw76fD1j21X_vJ1dvZgUbsgg4SiYdPVC5Ur7TiYJ6hvJMbH-JU4nL_pAAHf0aWsIaciUqmf_2ae1KKYCjP_B7J0DuVC5LyMDTMaLWAbe1uYdRIsrKT75wlrpQLI6SMd7-oST548cTZVvMMAaAKZZR8-YZIn821JJyw95DjdF-iattKvZ4DeaGA4s6FePBJxxsI-7McmwtD5w8HrBJXTR0jXkB392CZexKm3J8tkGVlmG_UC9t-cOFbVpnlp9ns8NB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-end p-4">
+<span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/30 uppercase tracking-widest">YAZILIM</span>
+</div>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-1">Python ile Oyun Geliştirme</h4>
+<p class="font-body-sm text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-base mr-1" data-icon="schedule">schedule</span> 60 dk • 12 Katılımcı
+                    </p>
+</div>
+<!-- Suggestion Card 3 -->
+<div class="flex-shrink-0 w-72 snap-start">
+<div class="relative h-44 rounded-3xl overflow-hidden mb-3 shadow-lg group">
+<img alt="Dijital Sanat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Tablet with digital drawing of a colorful character, stylus pen on the screen, soft artistic lighting with pastel pink and indigo tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLwQ4wvIpzc4ohlssC2I9wf1CC_SPUuC3lA5cBew2kFdumJZ2xDXX75SUqjO9tJ-bhVTtQ3juFmksCcczf1-6gSEbv9PgL-iS1WTDbj3Re2HDJ5R7njjI5U8QvM5ESVzM2V5p3lF-hSdPp05-XW4uSyXWuYLLZyuPhTLI8rOAYFrkZAykswmx9tzyvdw_iKP1wkp_dfSziwQZIINAk6PdMY0AQMTYQgt3dDug9Q1NHkQv6tlzRDi2AOliqexs_6CehmihDyYuk0rVl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary-container/80 to-transparent flex items-end p-4">
+<span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/30 uppercase tracking-widest">SANAT</span>
+</div>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-1">Procreate Pro İpuçları</h4>
+<p class="font-body-sm text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-base mr-1" data-icon="schedule">schedule</span> 50 dk • 5 Katılımcı
+                    </p>
+</div>
+</div>
+</section>
+<!-- "Popüler Eğitmenler" Section -->
+<section class="px-5 mb-10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Popüler Eğitmenler</h3>
+</div>
+<div class="space-y-4">
+<!-- Tutor Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center gap-4 transition-all hover:shadow-indigo-500/10 hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-indigo-50">
+<img alt="Elif Demir" class="w-full h-full object-cover" data-alt="Avatar of a teenage girl with glasses and stylish hair, vibrant vector style, looking confident and friendly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOnlUXa2p7sHA32jaaRGqQpfYZFupeb2tqXaMQTm6lmOuybJOv_hg575pVHmQHRJK7O_JB6SpQhenxpp0_HxcaNQOOqm0IthVOQf7Yanq2dBWjWHVAJRnz9kdFm7CK-QrCCOr1P6AUlQ5WoeIppzh6Ag0nhqYShqPZusZ57tRInxnFJIU0kSsqprHd2tViBrRitHrj4hbFWkD2K6t5DYDCQQi2rqHO9AbYZmxhtQUmSy-3dAA_sXJf3TzywA4OMRq9z3r7nQOmErrU"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface leading-tight">Elif Demir</h4>
+<p class="font-body-sm text-secondary font-semibold">İleri Matematik &amp; Fizik</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center text-[12px] font-bold text-yellow-500">
+<span class="material-symbols-outlined text-[14px] mr-0.5" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                            </span>
+<span class="text-[12px] text-slate-400">• 124 Ders</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Tutor Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center gap-4 transition-all hover:shadow-indigo-500/10 hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-indigo-50">
+<img alt="Can Özkan" class="w-full h-full object-cover" data-alt="Avatar of a trendy teenage boy with a hoodie, cool street style illustration, friendly and approachable vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkiXIvntbtUWehMo-F9mFD6xPS34_GL_V2z81w4FgYltNu8W0Bkz0rL3DeAjkVpcBVxyXRNRfVcbCXkH-U6SJe4ytUzxa9XXepSaMRY4q_wMt86-N2TEblARJIYUa-mUXbKn8AmqvOlhH9YZtJe9ORj1jAuQR_BHQyhwyOZ87pC2MAsyjmKz7nmPW2LMD8ZWdNGYFu35LfGF-m6kTiIMWA6onSPiY2cegp6xFpVrDrjpSwX8RGF12Y1ZKqj8J16PwPpdmYuY1D_bcS"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface leading-tight">Can Özkan</h4>
+<p class="font-body-sm text-secondary font-semibold">Street Dance &amp; Koreografi</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center text-[12px] font-bold text-yellow-500">
+<span class="material-symbols-outlined text-[14px] mr-0.5" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                            </span>
+<span class="text-[12px] text-slate-400">• 89 Ders</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Tutor Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center gap-4 transition-all hover:shadow-indigo-500/10 hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-indigo-50">
+<img alt="Selin Ak" class="w-full h-full object-cover" data-alt="Avatar of a teenage girl with artistic flair, bright colors, carrying a sketchbook, modern and creative illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcCxbctQBEoI_5hKyu32b1MNQe668WHnUHEKQPTClsqFvGjEgv8aNDgnL0riRZKWSy6BPq1DHBKecPbiKZYOjU0QGZ8VzBn_Dd5LRbthoSBL99z176uaduB8yrA5NGmgJkb2tzxQR6E6PXI_E3YzRbjoSVVDC7tytXa1yyto5n5UrM53cZgaAGH6beS5H1TcFjYozuIA_2y8RjwphMuUKHewfBaF6H0CYuT63w6mETF-EXqu3nTO7Blo3dpwTzUUUSMkr5O1O2Op3Q"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-body-lg text-on-surface leading-tight">Selin Ak</h4>
+<p class="font-body-sm text-secondary font-semibold">İllüstrasyon &amp; Grafik Tasarım</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center text-[12px] font-bold text-yellow-500">
+<span class="material-symbols-outlined text-[14px] mr-0.5" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 5.0
+                            </span>
+<span class="text-[12px] text-slate-400">• 56 Ders</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Category Bento -->
+<section class="px-5 pb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Kategoriler</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-indigo-600 rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl" data-icon="code">code</span>
+<span class="material-symbols-outlined text-2xl" data-icon="code">code</span>
+<span class="font-label-md">Yazılım</span>
+</div>
+<div class="bg-secondary rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl" data-icon="palette">palette</span>
+<span class="material-symbols-outlined text-2xl" data-icon="palette">palette</span>
+<span class="font-label-md">Tasarım</span>
+</div>
+<div class="bg-tertiary-container rounded-3xl p-4 h-32 flex flex-col justify-between text-white relative overflow-hidden">
+<span class="material-symbols-outlined opacity-20 absolute -right-2 -bottom-2 text-6xl" data-icon="music_note">music_note</span>
+<span class="material-symbols-outlined text-2xl" data-icon="music_note">music_note</span>
+<span class="font-label-md">Müzik</span>
+</div>
+<div class="bg-surface-container-highest rounded-3xl p-4 h-32 flex flex-col justify-between text-on-surface-variant relative overflow-hidden border border-slate-200/50">
+<span class="material-symbols-outlined opacity-10 absolute -right-2 -bottom-2 text-6xl" data-icon="more_horiz">more_horiz</span>
+<span class="material-symbols-outlined text-2xl" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-md">Diğer</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(79,70,229,0.1)] flex justify-around items-center px-4 pb-safe pt-2 rounded-t-2xl">
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 rounded-2xl px-5 py-1.5 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Spline_Sans'] text-[10px] font-medium tracking-wide">Ana Sayfa</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-indigo-500 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Spline_Sans'] text-[10px] font-medium tracking-wide">Arama</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-indigo-500 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-['Spline_Sans'] text-[10px] font-medium tracking-wide">Oluştur</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-indigo-500 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-['Spline_Sans'] text-[10px] font-medium tracking-wide">Profilim</span>
+</a>
+</nav>
+<!-- FAB for adding new skill (optional but adds to the Gen Z vibe) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-gradient-to-tr from-primary to-secondary rounded-full shadow-lg shadow-indigo-500/40 flex items-center justify-center text-white z-40 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-3xl" data-icon="rocket_launch">rocket_launch</span>
+</button>
+</body></html>

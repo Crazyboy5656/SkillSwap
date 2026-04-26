@@ -1,0 +1,19 @@
+[[plugins]]
+  package = "@netlify/plugin-inline-scripts"
+
+[build]
+  command = "node scripts/inject-config.js"
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+  conditions = {Role = []}
+
+# Don't catch HTML files with the SPA fallback — we want real routing
+[[redirects]]
+  from = "/*.html"
+  to = "/:splat.html"
+  status = 200
