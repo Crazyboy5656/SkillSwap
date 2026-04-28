@@ -1,5 +1,5 @@
-import { supabase } from '/js/supabase-client.js?v=3';
-import { getSkills, getCategories, createListing, updateProfile } from '/js/api.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=4';
+import { getSkills, getCategories, updateProfile } from '/js/api.js?v=4';
 import { store } from '/js/state.js?v=2';
 import { toast, setLoading } from '/js/ui.js?v=2';
 
@@ -8,6 +8,8 @@ const selectedInterests = new Set(); // category slugs
 let allSkills      = [];
 let allCategories  = [];
 let currentStep = 1;
+let userId         = null;
+let dataReady      = false;
 
 const steps = { 1: document.getElementById('step-1'), 2: document.getElementById('step-2'), 3: document.getElementById('step-3') };
 const progressBar = document.getElementById('progress-bar');
@@ -15,44 +17,66 @@ const stepLabel   = document.getElementById('step-label');
 const btnNext     = document.getElementById('btn-next');
 const btnBack     = document.getElementById('btn-back');
 
+function setNextEnabled(on) {
+  if (!btnNext) return;
+  btnNext.disabled = !on;
+  btnNext.classList.toggle('opacity-50', !on);
+  btnNext.classList.toggle('pointer-events-none', !on);
+}
+
+/**
+ * Yetenek + ilgi alanı seçimleri göstermelik; DB’ye yazılmaz.
+ * Sadece akışı tamamlandı saymak için onboarded + (opsiyonel) profil alanları kaydedilir.
+ */
+window._finishOnboarding = async function finishOnboarding() {
+  if (!userId) return toast.error('Oturum bulunamadı. Sayfayı yenileyin.');
+  setLoading(btnNext, true);
+  try {
+    const displayName = document.getElementById('display-name')?.value.trim();
+    const bio         = document.getElementById('bio')?.value.trim();
+    const locationVal = document.getElementById('location')?.value.trim();
+    const updates = { onboarded: true };
+    if (displayName) updates.display_name = displayName;
+    if (bio)         updates.bio = bio;
+    if (locationVal) updates.location = locationVal;
+    const { error: pErr } = await updateProfile(userId, updates);
+    if (pErr) {
+      const msg = pErr.message || pErr.details || pErr.hint || JSON.stringify(pErr);
+      throw new Error(msg);
+    }
+    toast.success('Harika! Profilin hazır 🎉');
+    setTimeout(() => { location.replace('/home'); }, 800);
+  } catch (err) {
+    console.error('finish onboarding:', err);
+    toast.error('Bir hata oluştu: ' + (err.message || String(err)));
+  } finally {
+    setLoading(btnNext, false);
+  }
+};
+
 btnNext?.addEventListener('click', handleNext);
 btnBack?.addEventListener('click', handleBack);
 
 async function init() {
+  setNextEnabled(false);
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) { location.replace('/login'); return; }
-  const userId = session.user.id;
+  userId = session.user.id;
   store.set({ user: session.user });
 
-  const [{ data: skills }, { data: categories }] = await Promise.all([getSkills(), getCategories()]);
-  allSkills     = skills     || [];
-  allCategories = categories || [];
+  try {
+    const [{ data: skills }, { data: categories }] = await Promise.all([getSkills(), getCategories()]);
+    allSkills     = skills     || [];
+    allCategories = categories || [];
+  } catch (e) {
+    console.error('onboarding load:', e);
+    toast.error('Veriler yüklenemedi. Sayfayı yenileyin.');
+    setNextEnabled(true);
+    return;
+  }
+  dataReady     = true;
   renderSkillChips('teach-chips', allSkills, selectedTeach);
-
-  window._finishOnboarding = async function() {
-    setLoading(btnNext, true);
-    try {
-      await Promise.all(
-        [...selectedTeach].map(skill_id =>
-          createListing({ user_id: userId, skill_id, kind: 'teach', mode: 'both' })
-        )
-      );
-      const displayName = document.getElementById('display-name')?.value.trim();
-      const bio         = document.getElementById('bio')?.value.trim();
-      const location    = document.getElementById('location')?.value.trim();
-      const updates = { onboarded: true, interests: [...selectedInterests] };
-      if (displayName) updates.display_name = displayName;
-      if (bio)         updates.bio = bio;
-      if (location)    updates.location = location;
-      await updateProfile(userId, updates);
-      toast.success('Harika! Profilin hazır 🎉');
-      setTimeout(() => location.replace('/home'), 1200);
-    } catch (err) {
-      toast.error('Bir hata oluştu: ' + err.message);
-    } finally {
-      setLoading(btnNext, false);
-    }
-  };
+  setNextEnabled(true);
 }
 
 function renderSkillChips(containerId, skills, selectedSet) {
@@ -119,6 +143,9 @@ function showStep(n) {
 }
 
 async function handleNext() {
+  if (!dataReady) {
+    return toast.warning('Veriler yükleniyor, lütfen bir saniye…');
+  }
   if (currentStep === 1) {
     if (selectedTeach.size === 0) return toast.warning('En az 1 öğretebileceğin yetenek seç.');
     renderInterestChips();
@@ -127,7 +154,7 @@ async function handleNext() {
     if (selectedInterests.size === 0) return toast.warning('En az 1 ilgi alanı seç.');
     showStep(3);
   } else if (currentStep === 3) {
-    if (window._finishOnboarding) await window._finishOnboarding();
+    await window._finishOnboarding();
   }
 }
 

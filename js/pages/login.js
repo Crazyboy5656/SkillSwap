@@ -1,4 +1,5 @@
-import { supabase } from '/js/supabase-client.js?v=3';
+import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=4';
+import { getProfile } from '/js/api.js?v=4';
 
 // Redirect if already logged in — .then() keeps this non-blocking so the
 // submit listener below is always attached synchronously.
@@ -48,6 +49,14 @@ form?.addEventListener('submit', async (e) => {
     return;
   }
 
+  if (!isSupabaseConfigured()) {
+    showMsg(
+      'Supabase ayarlı değil. SUPABASE_URL ve SUPABASE_ANON_KEY ile `node scripts/inject-config.js` çalıştırıp js/config.js oluştur; sayfayı yenile.',
+      true,
+    );
+    return;
+  }
+
   submitBtn.disabled = true;
   submitBtn.textContent = 'Giriş yapılıyor…';
 
@@ -65,20 +74,23 @@ form?.addEventListener('submit', async (e) => {
     showMsg('Giriş başarısız: ' + detail, true);
   } else {
     showMsg('Giriş başarılı! Yönlendiriliyorsunuz…');
-    // Check onboarding status before redirecting
     setTimeout(async () => {
       try {
         const uid = data.user?.id;
-        const r = await fetch(
-          `${window.SUPABASE_URL}/rest/v1/profiles?id=eq.${uid}&select=onboarded&limit=1`,
-          { headers: { apikey: window.SUPABASE_ANON_KEY, Authorization: `Bearer ${data.session.access_token}`, Accept: 'application/json' } }
-        );
-        const rows = await r.json().catch(() => []);
-        const onboarded = rows?.[0]?.onboarded;
-        location.replace(onboarded ? '/home' : '/onboarding');
-      } catch {
-        location.replace('/home');
+        if (!uid) {
+          location.replace('/onboarding');
+          return;
+        }
+        const { data: prof, error } = await getProfile(uid);
+        if (error || !prof) {
+          location.replace('/onboarding');
+          return;
+        }
+        location.replace(prof.onboarded ? '/home' : '/onboarding');
+      } catch (e) {
+        console.warn('post-login redirect:', e);
+        location.replace('/onboarding');
       }
-    }, 800);
+    }, 500);
   }
 });

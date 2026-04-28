@@ -5,9 +5,20 @@ const { createClient } = window.supabase;
 const SUPABASE_URL = window.SUPABASE_URL || 'https://YOUR-REF.supabase.co';
 const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'YOUR_ANON_KEY';
 
-if (typeof window !== 'undefined' && (SUPABASE_URL.includes('YOUR-REF') || SUPABASE_ANON_KEY === 'YOUR_ANON_KEY' || !window.SUPABASE_URL)) {
+/** Gerçek Supabase URL + anon JWT yoksa auth/API çağrıları “Failed to fetch” verir. */
+export function isSupabaseConfigured() {
+  const url = String(window.SUPABASE_URL || '').trim();
+  const key = String(window.SUPABASE_ANON_KEY || '').trim();
+  if (!url.startsWith('https://') || !key) return false;
+  if (/YOUR-REF|YOUR_PROJECT|placeholder|x\.supabase\.co/i.test(url)) return false;
+  if (key === 'YOUR_ANON_KEY' || key === 'k' || key.length < 80) return false;
+  if (!key.startsWith('eyJ')) return false;
+  return true;
+}
+
+if (typeof window !== 'undefined' && !isSupabaseConfigured()) {
   console.error(
-    '[SkillSwap] Supabase ayarı eksik. Yerelde: js/config.js kopyala. Vercel: Project → Settings → Environment Variables → SUPABASE_URL ve SUPABASE_ANON_KEY, sonra Redeploy.',
+    '[SkillSwap] Supabase ayarı eksik veya hatalı. Yerelde: projede `SUPABASE_URL` ve `SUPABASE_ANON_KEY` ile `node scripts/inject-config.js` çalıştır (js/config.js üretir). Vercel: Environment Variables + Redeploy. Sayfa file:// ile açıksa http://localhost kullan.',
   );
 }
 

@@ -1,4 +1,4 @@
-import { supabase } from './supabase-client.js?v=3';
+import { supabase } from './supabase-client.js?v=4';
 
 // ─── Auth ────────────────────────────────────────────────────────────────────
 

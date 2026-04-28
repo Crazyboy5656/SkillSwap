@@ -1,6 +1,6 @@
 // register.js — completely self-contained, no top-level await that could block listener registration
 
-import { supabase } from '/js/supabase-client.js?v=3';
+import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=4';
 
 // ─── Grab elements ────────────────────────────────────────────────────────────
 const form       = document.getElementById('register-form');
@@ -63,6 +63,13 @@ form?.addEventListener('submit', async (e) => {
   if (password.length < 6) return showMsg('Şifre en az 6 karakter olmalı.', true);
   if (password !== confirm) return showMsg('Şifreler eşleşmiyor.', true);
 
+  if (!isSupabaseConfigured()) {
+    return showMsg(
+      'Supabase bağlantısı ayarlı değil. Supabase Dashboard → Project Settings → API: Project URL ve anon public key’i alıp proje kökünde şunu çalıştır: SUPABASE_URL=… SUPABASE_ANON_KEY=… node scripts/inject-config.js — Ardından sayfayı yenile. (Vercel’de bu değişkenler Environment Variables’ta olmalı.)',
+      true,
+    );
+  }
+
   // Disable button
   submitBtn.disabled = true;
   submitBtn.textContent = 'Kaydediliyor…';
@@ -81,17 +88,30 @@ form?.addEventListener('submit', async (e) => {
 
   if (error) {
     console.error('signUp error:', error);
-    showMsg('Kayıt başarısız: ' + error.message, true);
+    let detail = error.message || '';
+    if (/failed to fetch/i.test(detail)) {
+      detail = isSupabaseConfigured()
+        ? 'Sunucuya ulaşılamadı (internet, VPN, reklam engelleyici veya sayfayı file:// ile açma). http://localhost ile dene.'
+        : 'Ağ hatası — önce Supabase URL ve anon key’i js/config.js içinde doğrula (inject-config).';
+    }
+    showMsg('Kayıt başarısız: ' + detail, true);
     return;
   }
 
   // Supabase may or may not require email confirmation
   if (data?.user?.identities?.length === 0) {
     showMsg('Bu e-posta zaten kayıtlı. Giriş yap!', true);
-    setTimeout(() => location.href = '/login', 2000);
+    setTimeout(() => { location.href = '/login'; }, 2000);
     return;
   }
 
-  showMsg('Kayıt başarılı! E-postanı doğrula veya giriş yap.');
-  setTimeout(() => location.href = '/login', 2200);
+  // Oturum açıldıysa (çoğu projede e-posta doğrulama kapalı) doğrudan onboarding → ilgi alanları orada
+  if (data?.session) {
+    showMsg('Kayıt başarılı! Profilini tamamlayalım.');
+    setTimeout(() => { location.replace('/onboarding'); }, 600);
+    return;
+  }
+
+  showMsg('Kayıt başarılı! E-postanı doğrula, sonra giriş yap.');
+  setTimeout(() => { location.href = '/login'; }, 2200);
 });

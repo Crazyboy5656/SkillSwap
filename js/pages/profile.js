@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=3';
+import { supabase } from '/js/supabase-client.js?v=4';
 import { getProfile, getProfileByHandle, getUserSkills, updateProfile, uploadAvatar, getReviewsForUser, blockUser, reportUser, askAI, createDirectReview, deleteReview, getReviewEligibility } from '/js/api.js?v=8';
 import { store } from '/js/state.js?v=2';
 import { initNotifications } from '/js/realtime.js?v=2';
