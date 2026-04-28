@@ -1,6 +1,6 @@
 // register.js — completely self-contained, no top-level await that could block listener registration
 
-import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=4';
+import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=5';
 
 // ─── Grab elements ────────────────────────────────────────────────────────────
 const form       = document.getElementById('register-form');
@@ -65,7 +65,7 @@ form?.addEventListener('submit', async (e) => {
 
   if (!isSupabaseConfigured()) {
     return showMsg(
-      'Supabase bağlantısı ayarlı değil. Supabase Dashboard → Project Settings → API: Project URL ve anon public key’i alıp proje kökünde şunu çalıştır: SUPABASE_URL=… SUPABASE_ANON_KEY=… node scripts/inject-config.js — Ardından sayfayı yenile. (Vercel’de bu değişkenler Environment Variables’ta olmalı.)',
+      'Supabase ayarlı değil. .env.local dosyasına SUPABASE_URL ve SUPABASE_ANON_KEY yaz, kökte `node scripts/inject-config.js` çalıştır, sayfayı yenile. (Vercel: Environment Variables + deploy)',
       true,
     );
   }

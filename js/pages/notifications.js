@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=5';
 import { getNotifications, markNotificationRead, markAllNotificationsRead,
          getIncomingRequests, respondMatchRequest, getMySessions,
          createReview } from '/js/api.js?v=4';

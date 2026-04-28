@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=5';
 import { sendPasswordReset } from '/js/auth.js?v=2';
 import { toast, setLoading } from '/js/ui.js?v=2';
 

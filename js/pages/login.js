@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=4';
+import { supabase, isSupabaseConfigured } from '/js/supabase-client.js?v=5';
 import { getProfile } from '/js/api.js?v=4';
 
 // Redirect if already logged in — .then() keeps this non-blocking so the
@@ -51,7 +51,7 @@ form?.addEventListener('submit', async (e) => {
 
   if (!isSupabaseConfigured()) {
     showMsg(
-      'Supabase ayarlı değil. SUPABASE_URL ve SUPABASE_ANON_KEY ile `node scripts/inject-config.js` çalıştırıp js/config.js oluştur; sayfayı yenile.',
+      'Supabase ayarlı değil. .env.local + `node scripts/inject-config.js` (yukarıdaki gerekirse Vercel env).',
       true,
     );
     return;

@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=5';
 import { getMatches, getMatch, getMessages, sendMessage, markMessagesRead,
          getSessionsForMatch, createSession, updateSessionStatus, getTutorIdForMatch, getListingSkillIdForTutor } from '/js/api.js?v=8';
 import { subscribeToChat, initNotifications, unsubscribe } from '/js/realtime.js?v=2';

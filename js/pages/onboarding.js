@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=5';
 import { getSkills, getCategories, updateProfile } from '/js/api.js?v=4';
 import { store } from '/js/state.js?v=2';
 import { toast, setLoading } from '/js/ui.js?v=2';

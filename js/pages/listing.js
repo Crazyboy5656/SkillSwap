@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=4';
+import { supabase } from '/js/supabase-client.js?v=5';
 import { getListing, sendMatchRequest, reportUser, blockUser } from '/js/api.js?v=4';
 import { initNotifications } from '/js/realtime.js?v=2';
 import { toast, setLoading, esc, avatarUrl, renderStars } from '/js/ui.js?v=2';

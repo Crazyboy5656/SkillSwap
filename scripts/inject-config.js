@@ -1,9 +1,35 @@
 // scripts/inject-config.js
 // Generates js/config.js from environment variables at build time.
 // Run: node scripts/inject-config.js
+//
+// Yerelde en kolayı: proje köküne .env.local koy (SUPABASE_URL, SUPABASE_ANON_KEY), sonra bu komutu çalıştır.
 
 const fs = require('fs');
 const path = require('path');
+
+const root = path.join(__dirname, '..');
+
+function loadDotEnv() {
+  for (const name of ['.env.local', '.env']) {
+    const fp = path.join(root, name);
+    if (!fs.existsSync(fp)) continue;
+    const lines = fs.readFileSync(fp, 'utf8').split(/\r?\n/);
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const eq = t.indexOf('=');
+      if (eq < 1) continue;
+      const k = t.slice(0, eq).trim();
+      let v = t.slice(eq + 1).trim();
+      if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+        v = v.slice(1, -1);
+      }
+      if (k && process.env[k] === undefined) process.env[k] = v;
+    }
+  }
+}
+
+loadDotEnv();
 
 const url = process.env.SUPABASE_URL || 'https://YOUR-REF.supabase.co';
 const key = process.env.SUPABASE_ANON_KEY || 'YOUR_ANON_KEY';
@@ -13,7 +39,10 @@ window.SUPABASE_URL = ${JSON.stringify(url)};
 window.SUPABASE_ANON_KEY = ${JSON.stringify(key)};
 `;
 
-const dir = path.join(__dirname, '..', 'js');
+const dir = path.join(root, 'js');
 if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 fs.writeFileSync(path.join(dir, 'config.js'), content);
 console.log('✓ js/config.js written');
+if (url.includes('YOUR-REF') || key === 'YOUR_ANON_KEY') {
+  console.warn('⚠  SUPABASE_URL / SUPABASE_ANON_KEY eksik. .env.local oluştur veya ortam değişkeni ver; sonra bu komutu yeniden çalıştır.');
+}

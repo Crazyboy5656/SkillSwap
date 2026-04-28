@@ -1,4 +1,4 @@
-import { supabase } from './supabase-client.js?v=4';
+import { supabase } from './supabase-client.js?v=5';
 import { store } from './state.js?v=2';
 import { toast, esc } from './ui.js?v=2';
 import { getNotifications, getUnreadCount, markNotificationRead } from './api.js?v=3';
