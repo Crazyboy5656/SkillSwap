@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SkillSwap</title>
+<script>
+(function () {
+  if (location.protocol === 'file:') {
+    location.replace(new URL('index.html', location.href).href);
+  } else {
+    location.replace(location.origin + '/');
+  }
+})();
+</script>
+</head>
+<body>
+<p style="font-family:system-ui;padding:1.5rem">Yönlendiriliyor… <a href="/">Ana sayfa</a></p>
+</body>
+</html>

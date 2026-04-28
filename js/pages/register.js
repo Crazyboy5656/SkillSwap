@@ -1,6 +1,6 @@
 // register.js — completely self-contained, no top-level await that could block listener registration
 
-import { supabase } from '/js/supabase-client.js?v=2';
+import { supabase } from '/js/supabase-client.js?v=3';
 
 // ─── Grab elements ────────────────────────────────────────────────────────────
 const form       = document.getElementById('register-form');

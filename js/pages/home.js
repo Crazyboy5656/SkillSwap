@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=2';
+import { supabase } from '/js/supabase-client.js?v=3';
 import { store } from '/js/state.js?v=2';
 import { initNotifications } from '/js/realtime.js?v=2';
 import { esc, avatarUrl, renderStars } from '/js/ui.js?v=2';

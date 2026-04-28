@@ -25,7 +25,7 @@ function copyDirRecursive(src, dest) {
   }
 }
 
-for (const dir of ['js', 'css', 'skillsswapdesigns']) {
+for (const dir of ['js', 'css', 'skillsswapdesigns', 'images']) {
   copyDirRecursive(path.join(root, dir), path.join(out, dir));
 }
 

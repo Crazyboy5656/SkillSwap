@@ -122,3 +122,10 @@ nav.bottom-nav-fixed {
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-in { animation: fadeIn 0.2s ease-out forwards; }
+
+/* Marka logosu — /images/skillswap-logo.png */
+img[src$="skillswap-logo.png"],
+img.app-logo {
+  width: auto;
+  object-fit: contain;
+}

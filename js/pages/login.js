@@ -1,4 +1,4 @@
-import { supabase } from '/js/supabase-client.js?v=2';
+import { supabase } from '/js/supabase-client.js?v=3';
 
 // Redirect if already logged in — .then() keeps this non-blocking so the
 // submit listener below is always attached synchronously.
@@ -57,7 +57,12 @@ form?.addEventListener('submit', async (e) => {
   submitBtn.innerHTML = '<span>Giriş yap</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>';
 
   if (error) {
-    showMsg('Giriş başarısız: ' + error.message, true);
+    let detail = error.message;
+    if (detail === 'Failed to fetch' || /failed to fetch/i.test(detail)) {
+      detail =
+        'Ağ hatası (Supabase’e ulaşılamadı). Vercel’de Environment Variables: SUPABASE_URL ve SUPABASE_ANON_KEY tanımlı mı? Deploy’u yenile. Veya js/config.js gerçek URL ve anon key içeriyor mu? (Tarayıcı geliştirici araçları → Ağ: engellenen istek / CORS yok).';
+    }
+    showMsg('Giriş başarısız: ' + detail, true);
   } else {
     showMsg('Giriş başarılı! Yönlendiriliyorsunuz…');
     // Check onboarding status before redirecting

@@ -1,4 +1,4 @@
-import { supabase } from './supabase-client.js?v=2';
+import { supabase } from './supabase-client.js?v=3';
 
 /**
  * Redirect to login if not authenticated.

@@ -1,4 +1,4 @@
-import { supabase } from './supabase-client.js?v=2';
+import { supabase } from './supabase-client.js?v=3';
 
 // ─── Raw REST helpers ─────────────────────────────────────────────────────────
 // supabase-js .from() queries hang in this environment; use raw fetch instead.
